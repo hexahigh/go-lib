@@ -16,6 +16,10 @@ func SupportsTrueColor() bool {
 		return true
 	}
 
+	if term == "xterm-kitty" {
+		return true
+	}
+
 	// Check TERM for keywords suggesting TrueColor support
 	if strings.Contains(term, "truecolor") || strings.Contains(term, "24bit") {
 		return true
@@ -28,7 +32,8 @@ func SupportsTrueColor() bool {
 func Supports256Colors() bool {
 	term := os.Getenv("TERM")
 
-	if term == "xterm-256color" || term == "screen-256color" {
+	switch term {
+	case "xterm-256color", "screen-256color", "xterm-kitty":
 		return true
 	}
 
