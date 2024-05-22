@@ -220,6 +220,7 @@ var sniffSignatures = []sniffSig{
 		pat:  []byte("\x00\x00\x00\x00\x00\x00\x00\x2A\x2A\x41\x43\x45\x2A\x2A"),
 		ct:   "application/x-ace-compressed",
 	}, // * ADDED
+	&isoSig{}, // * ADDED
 
 	// ! Executables
 	&exactSig{[]byte("\x4d\x5a"), "application/vnd.microsoft.portable-executable"}, // * ADDED
@@ -345,4 +346,15 @@ func (textSig) match(data []byte, firstNonWS int) string {
 		}
 	}
 	return "text/plain; charset=utf-8"
+}
+
+type isoSig struct{}
+
+func (isoSig) match(data []byte, firstNonWS int) string {
+	// Check value of bytes at offset 32769
+	if bytes.Equal(data[32768:32773], []byte("CD001")) {
+		return "application/x-iso9660-image"
+	}
+
+	return ""
 }
