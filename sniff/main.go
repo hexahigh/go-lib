@@ -220,7 +220,6 @@ var sniffSignatures = []sniffSig{
 		pat:  []byte("\x00\x00\x00\x00\x00\x00\x00\x2A\x2A\x41\x43\x45\x2A\x2A"),
 		ct:   "application/x-ace-compressed",
 	}, // * ADDED
-	&isoSig{}, // * ADDED
 
 	// ! Executables
 	&exactSig{[]byte("\x4d\x5a"), "application/vnd.microsoft.portable-executable"}, // * ADDED
