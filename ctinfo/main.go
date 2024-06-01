@@ -37,7 +37,11 @@ func GetCTInfo(ct string) *CTInfo {
 			return &file
 		}
 	}
-	return nil
+	return &CTInfo{
+		CT:         ct,
+		Extensions: []string{},
+		Filetype:   "",
+	}
 }
 
 func GetFiletype(ct string) string {
