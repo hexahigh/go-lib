@@ -29,6 +29,27 @@ var fileData = []CTInfo{
 		},
 		Filetype: "image",
 	},
+	{
+		CT: "image/webp",
+		Extensions: []string{
+			"webp",
+		},
+		Filetype: "image",
+	},
+	{
+		CT: "audio/mpeg",
+		Extensions: []string{
+			"mp3",
+		},
+		Filetype: "audio",
+	},
+	{
+		CT: "audio/aiff",
+		Extensions: []string{
+			"aiff",
+		},
+		Filetype: "audio",
+	},
 }
 
 func GetCTInfo(ct string) *CTInfo {
